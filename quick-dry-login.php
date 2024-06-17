@@ -22,9 +22,9 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Add HTML select to WP login form.
- * 
+ *
  * @since 1.0.0
- * 
+ *
  * @wp-hook 'login_form'
  */
 add_action( 'login_form', function() {
@@ -38,6 +38,8 @@ add_action( 'login_form', function() {
 					<?php _e( 'Select User', 'quick-dry-login' ) ?>
 				</option>
 				<?php foreach( get_users() as $user ) {
+					$role = ucwords( get_userdata( $user->ID )->roles[0] ?? '' );
+
 					printf(
 						'<option value="%s">%s - %s</option>',
 						esc_attr( $user->ID ),
@@ -53,9 +55,9 @@ add_action( 'login_form', function() {
 
 /**
  * Register custom API endpoint.
- * 
+ *
  * @since 1.0.0
- * 
+ *
  * @wp-hook 'rest_api_init'
  */
 add_action( 'rest_api_init', function() {
@@ -80,9 +82,9 @@ add_action( 'rest_api_init', function() {
 
 				/**
 				 * Fire on user's login success.
-				 * 
+				 *
 				 * @since 1.0.0
-				 * 
+				 *
 				 * @param string $user_id User ID.
 				 * @return void
 				 */
@@ -101,19 +103,19 @@ add_action( 'rest_api_init', function() {
 
 /**
  * Localise values for JS.
- * 
+ *
  * @since 1.0.0
- * 
+ *
  * @wp-hook 'login_enqueue_scripts'
  */
 add_action( 'login_enqueue_scripts', function() {
 	/**
 	 * Filter Redirect URL.
-	 * 
+	 *
 	 * On login, determine user's redirection.
-	 * 
+	 *
 	 * @since 1.0.0
-	 * 
+	 *
 	 * @param string $redirect
 	 * @return string
 	 */
@@ -140,9 +142,9 @@ add_action( 'login_enqueue_scripts', function() {
 
 /**
  * Bind styles & scripts to WP hook.
- * 
+ *
  * @since 1.0.0
- * 
+ *
  * @wp-hook 'login_head'
  */
 add_action( 'login_head', function() {
@@ -158,9 +160,9 @@ add_action( 'login_head', function() {
 
 /**
  * Add Plugin text translation.
- * 
+ *
  * @since 1.0.0
- * 
+ *
  * @wp-hook 'init'
  */
 add_action( 'init', function() {
