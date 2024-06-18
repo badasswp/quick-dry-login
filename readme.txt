@@ -1,6 +1,6 @@
 === Quick & Dry Login ===
 Contributors: badasswp
-Tags: login, quick, dry, fast, develop, staging.
+Tags: login, user, quick, fast.
 Requires at least: 4.0
 Tested up to: 6.5.5
 Stable tag: 1.0.0
