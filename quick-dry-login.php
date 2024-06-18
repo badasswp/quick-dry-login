@@ -31,11 +31,11 @@ add_action( 'login_form', function() {
 	?>
 	<p class="quick-dry-login">
 		<label for="quick-dry-login">
-			<?php _e( 'Quick & Dry Login', 'quick-dry-login' ) ?>
+			<?php esc_html_e( 'Quick & Dry Login', 'quick-dry-login' ) ?>
 			<br />
 			<select id="quick-dry-select" aria-describedby="quick-dry-login">
 				<option value="">
-					<?php _e( 'Select User', 'quick-dry-login' ) ?>
+					<?php esc_html_e( 'Select User', 'quick-dry-login' ) ?>
 				</option>
 				<?php foreach( get_users() as $user ) {
 					$role = ucwords( get_userdata( $user->ID )->roles[0] ?? '' );
