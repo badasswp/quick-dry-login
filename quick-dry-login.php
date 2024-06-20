@@ -39,7 +39,7 @@ add_action( 'login_form', function() {
 					printf(
 						'<option value="%s">%s - %s</option>',
 						esc_attr( $user->ID ),
-						esc_html( ucfirst( get_userdata( $user->ID )->roles[0] ) ),
+						esc_html__( get_userdata( $user->ID )->roles[0], 'quick-dry-login' ),
 						esc_html( strtolower( $user->user_email ) ),
 					);
 				} ?>
