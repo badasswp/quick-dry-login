@@ -30,10 +30,10 @@ if ( ! defined( 'WPINC' ) ) {
 add_action( 'login_form', function() {
 	?>
 	<p class="quick-dry-login">
-		<label>
+		<label for="quick-dry-login">
 			<?php _e( 'Quick & Dry Login', 'quick-dry-login' ) ?>
 			<br />
-			<select id="quick-dry-select">
+			<select id="quick-dry-select" aria-describedby="quick-dry-login">
 				<option value="">Select User Profile</option>
 				<?php foreach( get_users() as $user ) {
 					printf(
