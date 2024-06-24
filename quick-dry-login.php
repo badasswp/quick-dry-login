@@ -14,7 +14,37 @@
  * @package QuickDryLogin
  */
 
+namespace badasswp\QuickDryLogin;
 
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
+
+/**
+ * Add HTML select to WP login form.
+ * 
+ * @since 1.0.0
+ * 
+ * @wp-hook 'login-form'
+ */
+add_action( 'login_form', function() {
+	?>
+	<p class="quick-dry-login">
+		<label>
+			<?php _e( 'Quick & Dry Login', 'quick-dry-login' ) ?>
+			<br />
+			<select id="quick-dry-select">
+				<option value="">Select User Profile</option>
+				<?php foreach( get_users() as $user ) {
+					printf(
+						'<option value="%s">%s - %s</option>',
+						esc_attr( $user->ID ),
+						esc_html( ucfirst( get_userdata( $user->ID )->roles[0] ) ),
+						esc_html( strtolower( $user->user_email ) ),
+					);
+				} ?>
+			</select>
+		</label>
+	</p>
+	<?php
+} );
