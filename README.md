@@ -1,6 +1,6 @@
 # quick-dry-login
 
-Manually select any user profile to log into your WordPress development or staging website.
+Manually select any user profile to log into your WP development or staging website.
 
 > <span style="color:red">**WARNING:**</span>
 >
