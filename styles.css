@@ -1,0 +1,10 @@
+.quick-dry-login label {
+	width: 100%;
+}
+
+.quick-dry-login select {
+	width: 100%;
+	font-size: 16px;
+	margin-bottom: 15px;
+	height: 40px;
+}
