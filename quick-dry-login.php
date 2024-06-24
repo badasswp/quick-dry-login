@@ -75,3 +75,23 @@ add_action( 'rest_api_init', function() {
 		]
 	);
 } );
+
+/**
+ * Localise values for JS.
+ * 
+ * @since 1.0.0
+ * 
+ * @wp-hook 'login_enqueue_scripts'
+ */
+add_action( 'login_enqueue_scripts', function() {
+	wp_enqueue_script( 'quick-dry-local' );
+
+	wp_localize_script(
+		'quick-dry-local',
+		'quickDryLogin',
+		[
+			'restUrl'     => get_rest_url( null, 'quick-dry-login/v1' ),
+			'destination' => get_admin_url(),
+		]
+	);
+} );
