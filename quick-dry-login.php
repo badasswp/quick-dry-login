@@ -95,3 +95,30 @@ add_action( 'login_enqueue_scripts', function() {
 		]
 	);
 } );
+
+/**
+ * Bind styles & scripts to WP hook.
+ * 
+ * @since 1.0.0
+ * 
+ * @wp-hook 'login-head'
+ */
+add_action( 'login_head', function() {
+	printf(
+		'<link
+			href="%s"
+			rel="stylesheet"
+			type="text/css"
+		/>',
+		esc_attr( plugins_url( 'quick-dry-login/styles.css' ) )
+	);
+
+	printf(
+		'<script
+			src="%s"
+			type="text/javascript"
+			defer
+		></script>',
+		esc_attr( plugins_url( 'quick-dry-login/scripts.js' ) )
+	);
+} );
