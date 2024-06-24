@@ -48,3 +48,30 @@ add_action( 'login_form', function() {
 	</p>
 	<?php
 } );
+
+/**
+ * Register custom API endpoint.
+ * 
+ * @since 1.0.0
+ * 
+ * @wp-hook 'rest-api-init'
+ */
+add_action( 'rest_api_init', function() {
+	register_rest_route(
+		'quick-dry-login/v1',
+		'/(?P<id>[\d]+)',
+		[
+			'methods'             => \WP_REST_Server::READABLE,
+			'permission_callback' => '__return_true',
+			'callback'            => function( $request ) {
+				$user_id = $request['id'];
+				wp_set_auth_cookie( $user_id, TRUE );
+				return rest_ensure_response(
+					[
+						'userId' => $user_id
+					]
+				);
+			},
+		]
+	);
+} );
