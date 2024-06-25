@@ -67,7 +67,7 @@ add_action( 'rest_api_init', function() {
 				if ( ! isset( $request['id'] ) || ! get_user_by( 'id', $request['id'] ) ) {
 					return rest_ensure_response(
 						[
-							'userId' => $request['id']
+							'userId' => $request['id'] ?? null
 						],
 						400
 					);
