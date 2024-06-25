@@ -80,7 +80,7 @@ add_action( 'rest_api_init', function() {
 				 * 
 				 * @since 1.0.0
 				 * 
-				 * @param string $user_id
+				 * @param string $user_id User ID.
 				 * @return void
 				 */
 				do_action( 'quick_dry_login_success', $user_id );
