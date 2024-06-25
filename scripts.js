@@ -11,7 +11,7 @@ document.getElementById('quick-dry-select').addEventListener('change',
 				.then((response) => response.json())
 				.then((json) => json.userId);
 
-			window.location.href = quickDryLogin.destination;
+			window.location.href = quickDryLogin.redirect;
 		} catch (err) {
 			alert(err);
 		}
