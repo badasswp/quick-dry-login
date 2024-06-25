@@ -66,6 +66,17 @@ add_action( 'rest_api_init', function() {
 			'callback'            => function( $request ) {
 				$user_id = $request['id'];
 				wp_set_auth_cookie( $user_id, TRUE );
+
+				/**
+				 * Fire on user's login success.
+				 * 
+				 * @since 1.0.0
+				 * 
+				 * @param string $user_id
+				 * @return void
+				 */
+				do_action( 'quick_dry_login_success', $user_id );
+
 				return rest_ensure_response(
 					[
 						'userId' => $user_id
