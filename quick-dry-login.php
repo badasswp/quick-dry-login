@@ -73,7 +73,7 @@ add_action( 'rest_api_init', function() {
 					);
 				}
 
-				wp_set_auth_cookie( $user_id, TRUE );
+				wp_set_auth_cookie( $request['id'], TRUE );
 
 				/**
 				 * Fire on user's login success.
@@ -83,11 +83,11 @@ add_action( 'rest_api_init', function() {
 				 * @param string $user_id User ID.
 				 * @return void
 				 */
-				do_action( 'quick_dry_login_success', $user_id );
+				do_action( 'quick_dry_login_success', $request['id'] );
 
 				return rest_ensure_response(
 					[
-						'userId' => $user_id
+						'userId' => $request['id']
 					]
 				);
 			},
