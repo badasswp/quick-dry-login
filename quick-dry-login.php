@@ -64,7 +64,15 @@ add_action( 'rest_api_init', function() {
 			'methods'             => \WP_REST_Server::READABLE,
 			'permission_callback' => '__return_true',
 			'callback'            => function( $request ) {
-				$user_id = $request['id'];
+				if ( ! isset( $request['id'] ) || ! get_user_by( 'id', $request['id'] ) ) {
+					return rest_ensure_response(
+						[
+							'userId' => $request['id']
+						],
+						400
+					);
+				}
+
 				wp_set_auth_cookie( $user_id, TRUE );
 
 				/**
