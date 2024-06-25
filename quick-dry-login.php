@@ -84,14 +84,26 @@ add_action( 'rest_api_init', function() {
  * @wp-hook 'login_enqueue_scripts'
  */
 add_action( 'login_enqueue_scripts', function() {
+	/**
+	 * Filter Redirect URL.
+	 * 
+	 * On login, determine user's redirection.
+	 * 
+	 * @since 1.0.0
+	 * 
+	 * @param string $redirect
+	 * @return string
+	 */
+	$redirect_url = apply_filters( 'quick_dry_login_redirect', get_admin_url() );
+
 	wp_enqueue_script( 'quick-dry-local' );
 
 	wp_localize_script(
 		'quick-dry-local',
 		'quickDryLogin',
 		[
-			'restUrl'     => get_rest_url( null, 'quick-dry-login/v1' ),
-			'destination' => get_admin_url(),
+			'redirect' => $redirect_url,
+			'restUrl'  => get_rest_url( null, 'quick-dry-login/v1' ),
 		]
 	);
 } );
