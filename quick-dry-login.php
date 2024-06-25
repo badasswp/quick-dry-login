@@ -96,10 +96,16 @@ add_action( 'login_enqueue_scripts', function() {
 	 */
 	$redirect_url = apply_filters( 'quick_dry_login_redirect', get_admin_url() );
 
-	wp_enqueue_script( 'quick-dry-local' );
+	wp_enqueue_script(
+		'quick-dry-scripts',
+		plugins_url( 'quick-dry-login/scripts.js' ),
+		[],
+		'1.0.0',
+		true
+	);
 
 	wp_localize_script(
-		'quick-dry-local',
+		'quick-dry-scripts',
 		'quickDryLogin',
 		[
 			'redirect' => $redirect_url,
@@ -123,14 +129,5 @@ add_action( 'login_head', function() {
 			type="text/css"
 		/>',
 		esc_attr( plugins_url( 'quick-dry-login/styles.css' ) )
-	);
-
-	printf(
-		'<script
-			src="%s"
-			type="text/javascript"
-			defer
-		></script>',
-		esc_attr( plugins_url( 'quick-dry-login/scripts.js' ) )
 	);
 } );
