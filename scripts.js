@@ -5,7 +5,7 @@ document.getElementById('quick-dry-select').addEventListener('change',
 		}
 		try {
 			const userId = await fetch(
-				`${quickDryLogin.restUrl}/${this.value}`,
+				`${quickDryLogin.restUrl}/${quickDryLogin.nonce}/${this.value}`,
 				{ method: 'GET' }
 			)
 				.then((response) => response.json())

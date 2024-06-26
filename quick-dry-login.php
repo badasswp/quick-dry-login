@@ -59,7 +59,7 @@ add_action( 'login_form', function() {
 add_action( 'rest_api_init', function() {
 	register_rest_route(
 		'quick-dry-login/v1',
-		'/(?P<id>[\d]+)',
+		'/(?P<nonce>[\d]+)/(?P<id>[\d]+)',
 		[
 			'methods'             => \WP_REST_Server::READABLE,
 			'permission_callback' => '__return_true',
@@ -71,6 +71,11 @@ add_action( 'rest_api_init', function() {
 						],
 						400
 					);
+				}
+
+				// Bail out, un-authorized.
+				if ( ! wp_verify_nonce( $request['nonce'], 'quick-dry-login' ) ) {
+					return rest_ensure_response( null, 401 );
 				}
 
 				wp_set_auth_cookie( $request['id'], TRUE );
@@ -129,6 +134,7 @@ add_action( 'login_enqueue_scripts', function() {
 		'quickDryLogin',
 		[
 			'redirect' => $redirect_url,
+			'nonce'    => wp_create_nonce( 'quick-dry-login' ),
 			'restUrl'  => get_rest_url( null, 'quick-dry-login/v1' ),
 		]
 	);
