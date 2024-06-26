@@ -64,13 +64,9 @@ add_action( 'rest_api_init', function() {
 			'methods'             => \WP_REST_Server::READABLE,
 			'permission_callback' => '__return_true',
 			'callback'            => function( $request ) {
+				// Bail out, bad request.
 				if ( ! isset( $request['id'] ) || ! get_user_by( 'id', $request['id'] ) ) {
-					return rest_ensure_response(
-						[
-							'userId' => $request['id'] ?? null
-						],
-						400
-					);
+					return rest_ensure_response( null, 400 );
 				}
 
 				// Bail out, un-authorized.
