@@ -70,7 +70,7 @@ add_action( 'rest_api_init', function() {
 				}
 
 				// Bail out, un-authorized.
-				if ( ! wp_verify_nonce( $request['nonce'], 'quick-dry-login' ) ) {
+				if ( ! isset( $request['nonce'] ) || ! wp_verify_nonce( $request['nonce'], 'quick-dry-login' ) ) {
 					return rest_ensure_response( null, 401 );
 				}
 
