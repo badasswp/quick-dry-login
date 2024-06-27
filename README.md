@@ -25,7 +25,6 @@ public function log_user_time( $user_id ): void {
 **Parameters**
 
 - user_id _`{int}`_ The User ID for the user that was just logged in.
-<br/>
 
 #### `quick_dry_login_redirect`
 
@@ -51,4 +50,3 @@ public function send_user_to_post( $url ): string {
 **Parameters**
 
 - url _`{string}`_ The default WP Admin URL.
-<br/>
