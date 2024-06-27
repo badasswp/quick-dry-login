@@ -12,7 +12,7 @@ You can also get the latest version from any of our [release tags](https://githu
 
 ## Why Quick & Dry Login
 
-If you don't ever want to worry about entering in a `username` and `password` for your development or staging websites, then this plugin is exactly made for that purpose! You can select any user from the dropdown list of users and log into their session. As a caveat, __this plugin should NEVER be used on a Production website!__
+If you don't ever want to worry about entering in a `username` and `password` for your WP development or staging websites, then this plugin is exactly made for that purpose! You can select any user from the dropdown list of users and log into their session. As a caveat, __this plugin should NEVER be used on a Production website!__
 
 #### `quick_dry_login_success`
 
