@@ -21,3 +21,8 @@ public function log_user_time( $user_id ): void {
 	update_user_meta( $user_id, 'login_time', time() );
 }
 ```
+
+**Parameters**
+
+- user_id _`{int}`_ The User ID for the user that was just logged in.
+<br/>
