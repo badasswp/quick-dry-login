@@ -1,5 +1,5 @@
 /**
- * Event Listener: ID - 'quick-dry-select'.
+ * Event Listener for ID: 'quick-dry-select'.
  * 
  * Hit WP REST endpoint with the selected user ID value, if successful,
  * redirect the user to admin page, authenticate session.
