@@ -117,7 +117,7 @@ add_action( 'login_enqueue_scripts', function() {
 	 * @param string $redirect
 	 * @return string
 	 */
-	$redirect_url = apply_filters( 'quick_dry_login_redirect', get_admin_url() );
+	$redirect_url = (string) apply_filters( 'quick_dry_login_redirect', get_admin_url() );
 
 	wp_enqueue_script(
 		'quick-dry-scripts',
