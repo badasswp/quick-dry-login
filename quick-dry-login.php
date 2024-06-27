@@ -20,6 +20,8 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+define( 'RANDOM_NONCE', \mt_rand() );
+
 /**
  * Add HTML select to WP login form.
  * 
