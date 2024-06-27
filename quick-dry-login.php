@@ -133,7 +133,7 @@ add_action( 'login_enqueue_scripts', function() {
 		[
 			'redirect' => $redirect_url,
 			'nonce'    => wp_create_nonce( 'quick-dry-login' ),
-			'restUrl'  => get_rest_url( null, 'quick-dry-login/v1' ),
+			'restUrl'  => esc_url( get_rest_url( null, 'quick-dry-login/v1' ) ),
 		]
 	);
 } );
