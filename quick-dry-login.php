@@ -27,7 +27,7 @@ define( 'RANDOM_NONCE', \mt_rand() );
  * 
  * @since 1.0.0
  * 
- * @wp-hook 'login-form'
+ * @wp-hook 'login_form'
  */
 add_action( 'login_form', function() {
 	?>
@@ -56,7 +56,7 @@ add_action( 'login_form', function() {
  * 
  * @since 1.0.0
  * 
- * @wp-hook 'rest-api-init'
+ * @wp-hook 'rest_api_init'
  */
 add_action( 'rest_api_init', function() {
 	register_rest_route(
@@ -143,7 +143,7 @@ add_action( 'login_enqueue_scripts', function() {
  * 
  * @since 1.0.0
  * 
- * @wp-hook 'login-head'
+ * @wp-hook 'login_head'
  */
 add_action( 'login_head', function() {
 	printf(
