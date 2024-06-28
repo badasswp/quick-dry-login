@@ -38,12 +38,12 @@ add_action( 'login_form', function() {
 					<?php esc_html_e( 'Select User', 'quick-dry-login' ) ?>
 				</option>
 				<?php foreach( get_users() as $user ) {
-					$role = ucwords( get_userdata( $user->ID )->roles[0] ?? '' );
+					$user_role = ucwords( get_userdata( $user->ID )->roles[0] ?? '' );
 
 					printf(
 						'<option value="%s">%s - %s</option>',
 						esc_attr( $user->ID ),
-						esc_html__( ucwords( get_userdata( $user->ID )->roles[0] ), 'quick-dry-login' ),
+						esc_html( $user_role ),
 						esc_html( strtolower( $user->user_email ) ),
 					);
 				} ?>
