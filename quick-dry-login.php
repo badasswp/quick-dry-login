@@ -155,3 +155,14 @@ add_action( 'login_head', function() {
 		esc_attr( plugins_url( 'quick-dry-login/styles.css' ) )
 	);
 } );
+
+/**
+ * Add Plugin text translation.
+ * 
+ * @since 1.0.0
+ * 
+ * @wp-hook 'init'
+ */
+add_action( 'init', function() {
+	load_plugin_textdomain( 'quick-dry-login', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+} );
