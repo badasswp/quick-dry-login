@@ -6,6 +6,8 @@ Manually select any user profile to log into your WP development or staging webs
 >
 > This plugin should NEVER be used on a Production website.
 
+https://github.com/badasswp/quick-dry-login/assets/149586343/4d37520f-7d19-4171-9823-29f22038fec1
+
 ## Download
 
 You can also get the latest version from any of our [release tags](https://github.com/badasswp/quick-dry-login/releases).
