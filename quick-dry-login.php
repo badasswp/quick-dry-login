@@ -34,12 +34,14 @@ add_action( 'login_form', function() {
 			<?php _e( 'Quick & Dry Login', 'quick-dry-login' ) ?>
 			<br />
 			<select id="quick-dry-select" aria-describedby="quick-dry-login">
-				<option value="">Select User Profile</option>
+				<option value="">
+					<?php _e( 'Select User', 'quick-dry-login' ) ?>
+				</option>
 				<?php foreach( get_users() as $user ) {
 					printf(
 						'<option value="%s">%s - %s</option>',
 						esc_attr( $user->ID ),
-						esc_html__( get_userdata( $user->ID )->roles[0], 'quick-dry-login' ),
+						esc_html__( ucwords( get_userdata( $user->ID )->roles[0] ), 'quick-dry-login' ),
 						esc_html( strtolower( $user->user_email ) ),
 					);
 				} ?>
