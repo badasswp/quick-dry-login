@@ -61,7 +61,7 @@ add_action( 'login_form', function() {
 add_action( 'rest_api_init', function() {
 	register_rest_route(
 		'quick-dry-login/v1',
-		'/(?P<nonce>[\d]+)/(?P<id>[\d]+)',
+		'/(?P<nonce>[\w]+)/(?P<id>[\d]+)',
 		[
 			'methods'             => \WP_REST_Server::READABLE,
 			'permission_callback' => '__return_true',
