@@ -6,8 +6,6 @@ Manually select any user profile to log into your WP development or staging webs
 >
 > This plugin should NEVER be used on a Production website.
 
-https://github.com/badasswp/quick-dry-login/assets/149586343/4d37520f-7d19-4171-9823-29f22038fec1
-
 ## Download
 
 You can also get the latest version from any of our [release tags](https://github.com/badasswp/quick-dry-login/releases).
@@ -15,6 +13,10 @@ You can also get the latest version from any of our [release tags](https://githu
 ## Why Quick & Dry Login
 
 If you don't ever want to worry about entering in a `username` and `password` for your WP development or staging websites, then this plugin is exactly made for that purpose! You can select any user from the dropdown list of users and log into their session. As a caveat, __this plugin should NEVER be used on a Production website!__
+
+https://github.com/badasswp/quick-dry-login/assets/149586343/4d37520f-7d19-4171-9823-29f22038fec1
+
+### Hooks
 
 #### `quick_dry_login_success`
 
