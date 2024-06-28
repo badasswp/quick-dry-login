@@ -1,0 +1,71 @@
+# Copyright (C) badasswp
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Quick & Dry Login\n"
+"POT-Creation-Date: 2024-06-28 07:19+0100\n"
+"PO-Revision-Date: 2024-06-28 09:00+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: quick-dry-login\n"
+"X-Generator: Poedit 3.4.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: quick-dry-login.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#. Plugin Name
+msgid "Quick & Dry Login"
+msgstr "快速干式登录"
+
+#. Plugin URI
+msgid "https://github.com/badasswp/quick-dry-login"
+msgstr "https://github.com/badasswp/quick-dry-login"
+
+#. Description
+msgid ""
+"Manually select any user profile to log into your WP development or staging "
+"website."
+msgstr "手动选择任何用户配置文件以登录您的 WP 开发或暂存网站。"
+
+#. Author
+msgid "badasswp"
+msgstr "坏蛋"
+
+#. Author URI
+msgid "https://github.com/badasswp"
+msgstr "https://github.com/badasswp"
+
+#. Select User
+msgid "Select User"
+msgstr "选择用户"
+
+#. Administrator
+msgid "Administrator"
+msgstr "管理员"
+
+#. Author
+msgid "Author"
+msgstr "作者"
+
+#. Contributor
+msgid "Contributor"
+msgstr "贡献者"
+
+#. Editor
+msgid "Editor"
+msgstr "编辑"
+
+#. Subscriber
+msgid "Subscriber"
+msgstr "订阅者"
+
+#. Shop Manager
+msgid "Shop Manager"
+msgstr "商店"
