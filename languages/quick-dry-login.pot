@@ -20,28 +20,28 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#. Plugin Name of the plugin/theme
+#. Plugin Name
 msgid "Quick & Dry Login"
 msgstr ""
 
-#. Plugin URI of the plugin/theme
+#. Plugin URI
 msgid "https://github.com/badasswp/quick-dry-login"
 msgstr ""
 
-#. Description of the plugin/theme
+#. Description
 msgid "Manually select any user profile to log into your WP development or staging website."
 msgstr ""
 
-#. Author of the plugin/theme
+#. Author
 msgid "badasswp"
 msgstr ""
 
-#. Author URI of the plugin/theme
+#. Author URI
 msgid "https://github.com/badasswp"
 msgstr ""
 
-#. Select Profile
-msgid "Select User Profile"
+#. Select User
+msgid "Select User"
 msgstr ""
 
 #. Administrator
