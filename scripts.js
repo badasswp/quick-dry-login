@@ -12,7 +12,7 @@ document.getElementById('quick-dry-select').addEventListener('change',
 		if (!this.value) {
 			return;
 		}
-		try {
+    try {
       const response = await fetch(
         `${quickDryLogin.restUrl}/${quickDryLogin.nonce}/${this.value}`,
         { method: 'GET' }
@@ -23,8 +23,12 @@ document.getElementById('quick-dry-select').addEventListener('change',
       if (userId) {
         window.location.href = quickDryLogin.redirect;
       }
-		} catch (err) {
-			alert(err);
+    } catch (error) {
+      const { status } = await error.json();
+
+      console.log(
+        `Fatal Error: ${status}, Unable to login user with ID: ${this.value}`
+      )
 		}
 	}
 );
