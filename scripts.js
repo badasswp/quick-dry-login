@@ -10,8 +10,12 @@
 document.getElementById('quick-dry-select').addEventListener('change',
   async function (evt) {
     if (!this.value) {
+      console.error(
+        `Fatal Error: Unable to log in User with no ID.`
+      );
       return;
     }
+
     try {
       const response = await fetch(
         `${quickDryLogin.restUrl}/${quickDryLogin.nonce}/${this.value}`,
