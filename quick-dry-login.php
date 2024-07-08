@@ -57,7 +57,7 @@ add_action( 'login_form', function() {
  * Register custom API endpoint.
  *
  * @since 1.0.0
- * @since 1.0.1 Set Current User ID, use \WP_Errors
+ * @since 1.0.1 Set Current User ID, use \WP_Errors.
  *
  * @wp-hook 'rest_api_init'
  */
