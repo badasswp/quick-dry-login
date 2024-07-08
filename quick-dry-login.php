@@ -90,6 +90,11 @@ add_action( 'rest_api_init', function() {
 					);
 				}
 
+				wp_set_current_user(
+					$request['id'],
+					get_user_by( 'id', $request['id'] )->user_login
+				);
+
 				wp_set_auth_cookie( $request['id'], TRUE );
 
 				/**
