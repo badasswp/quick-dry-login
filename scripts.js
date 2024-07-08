@@ -8,10 +8,10 @@
  * @param {Event} evt - The event object.
  */
 document.getElementById('quick-dry-select').addEventListener('change',
-	async function (evt) {
-		if (!this.value) {
-			return;
-		}
+  async function (evt) {
+    if (!this.value) {
+      return;
+    }
     try {
       const response = await fetch(
         `${quickDryLogin.restUrl}/${quickDryLogin.nonce}/${this.value}`,
@@ -29,6 +29,6 @@ document.getElementById('quick-dry-select').addEventListener('change',
       console.log(
         `Fatal Error: ${status}, Unable to login user with ID: ${this.value}`
       )
-		}
-	}
+    }
+  }
 );
