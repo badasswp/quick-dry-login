@@ -24,11 +24,9 @@ document.getElementById('quick-dry-select').addEventListener('change',
         window.location.href = quickDryLogin.redirect;
       }
     } catch (error) {
-      const { status } = await error.json();
-
-      console.log(
-        `Fatal Error: ${status}, Unable to login user with ID: ${this.value}`
-      )
+      console.error(
+        `Fatal Error: Unable to log in User with ID: ${this.value}`
+      );
     }
   }
 );
