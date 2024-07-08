@@ -70,12 +70,24 @@ add_action( 'rest_api_init', function() {
 			'callback'            => function( $request ) {
 				// Bail out, bad request.
 				if ( ! isset( $request['id'] ) || ! get_user_by( 'id', $request['id'] ) ) {
-					return rest_ensure_response( null, 400 );
+					return new \WP_Error(
+						'quick_dry_login_invalid_user',
+						'Invalid User ID',
+						[
+							'status' => 400,
+						]
+					);
 				}
 
 				// Bail out, un-authorized.
 				if ( ! isset( $request['nonce'] ) || ! wp_verify_nonce( $request['nonce'], 'quick-dry-login' ) ) {
-					return rest_ensure_response( null, 401 );
+					return new \WP_Error(
+						'quick_dry_login_invalid_nonce',
+						'Invalid WP Nonce',
+						[
+							'status' => 401,
+						]
+					);
 				}
 
 				wp_set_auth_cookie( $request['id'], TRUE );
