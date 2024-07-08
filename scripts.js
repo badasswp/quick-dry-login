@@ -1,6 +1,6 @@
 /**
  * Event Listener for ID: 'quick-dry-select'.
- * 
+ *
  * Hit WP REST endpoint with the selected user ID value, if successful,
  * redirect the user to admin page, authenticate session.
  *
@@ -13,14 +13,16 @@ document.getElementById('quick-dry-select').addEventListener('change',
 			return;
 		}
 		try {
-			const userId = await fetch(
-				`${quickDryLogin.restUrl}/${quickDryLogin.nonce}/${this.value}`,
-				{ method: 'GET' }
-			)
-				.then((response) => response.json())
-				.then((json) => json.userId);
+      const response = await fetch(
+        `${quickDryLogin.restUrl}/${quickDryLogin.nonce}/${this.value}`,
+        { method: 'GET' }
+      );
 
-			window.location.href = quickDryLogin.redirect;
+      const { userId } = await response.json();
+
+      if (userId) {
+        window.location.href = quickDryLogin.redirect;
+      }
 		} catch (err) {
 			alert(err);
 		}
