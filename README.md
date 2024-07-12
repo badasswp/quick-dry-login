@@ -26,7 +26,7 @@ This custom hook (action) fires immediately after the user has successfully bein
 add_action( 'quick_dry_login_success', [ $this, 'log_user_time' ] );
 
 public function log_user_time( $user_id ): void {
-	update_user_meta( $user_id, 'login_time', time() );
+  update_user_meta( $user_id, 'login_time', time() );
 }
 ```
 
@@ -42,16 +42,16 @@ This custom hook (filter) provides the ability to modify the destination URL aft
 add_filter( 'quick_dry_login_redirect', [ $this, 'send_user_to_post' ], 10 );
 
 public function send_user_to_post( $url ): string {
-	if ( $url ) {
-		return add_query_arg(
-			[
-				'post_type' => 'post'
-			],
-			get_admin_url( 'edit.php' )
-		);
-	}
-	
-	return $url;
+  if ( $url ) {
+    return add_query_arg(
+      [
+        'post_type' => 'post',
+      ],
+      get_admin_url( 'edit.php' )
+    );
+  }
+
+  return $url;
 }
 ```
 
