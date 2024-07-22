@@ -3,7 +3,7 @@
  * Plugin Name: Quick & Dry Login
  * Plugin URI:  https://github.com/badasswp/quick-dry-login
  * Description: Manually select any user profile to log into your WP development or staging website.
- * Version:     1.0.1
+ * Version:     1.0.2
  * Author:      badasswp
  * Author URI:  https://github.com/badasswp
  * License:     GPL v2 or later
