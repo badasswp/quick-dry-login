@@ -141,7 +141,7 @@ add_action( 'login_enqueue_scripts', function() {
 
 	wp_enqueue_script(
 		'quick-dry-scripts',
-		plugins_url( 'quick-dry-login/scripts.js' ),
+		trailingslashit( plugin_dir_url( __FILE__ ) ) . 'scripts.js',
 		[],
 		'1.0.0',
 		true
@@ -172,7 +172,7 @@ add_action( 'login_head', function() {
 			rel="stylesheet"
 			type="text/css"
 		/>',
-		esc_attr( plugins_url( 'quick-dry-login/styles.css' ) )
+		esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) . 'styles.css' )
 	);
 } );
 
