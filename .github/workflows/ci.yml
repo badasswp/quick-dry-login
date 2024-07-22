@@ -1,4 +1,4 @@
-name: WebPImageConverter Build
+name: QuickDryLogin Build
 
 on:
   push:
