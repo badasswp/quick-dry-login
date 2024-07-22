@@ -133,6 +133,7 @@ add_action( 'login_enqueue_scripts', function() {
 	 * On login, determine user's redirection.
 	 *
 	 * @since 1.0.0
+	 * @since 1.0.2 Fix Asset path (scripts.js).
 	 *
 	 * @param string $redirect
 	 * @return string
@@ -143,7 +144,7 @@ add_action( 'login_enqueue_scripts', function() {
 		'quick-dry-scripts',
 		trailingslashit( plugin_dir_url( __FILE__ ) ) . 'scripts.js',
 		[],
-		'1.0.0',
+		'1.0.2',
 		true
 	);
 
@@ -162,6 +163,7 @@ add_action( 'login_enqueue_scripts', function() {
  * Bind styles & scripts to WP hook.
  *
  * @since 1.0.0
+ * @since 1.0.2 Fix Asset path (styles.css).
  *
  * @wp-hook 'login_head'
  */
