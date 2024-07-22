@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.2
+* Fix Asset path for Styles & Scripts.
+* Safely escape asset path.
+* Fix linting issues.
+* Tested up to WP 6.6
+
 ## 1.0.1
 * Set Current User ID for logged in user.
 * Use \WP Error objects, to gracefully handle 400, 401 errors.
