@@ -172,7 +172,7 @@ add_action( 'login_head', function() {
 			rel="stylesheet"
 			type="text/css"
 		/>',
-		esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) . 'styles.css' )
+		esc_url( trailingslashit( plugin_dir_url( __FILE__ ) ) . 'styles.css' )
 	);
 } );
 
