@@ -1,7 +1,9 @@
-name: QuickDryLogin Build
+name: QuickDryLogin
 
 on:
   push:
+    branches:
+      - master
 
 permissions:
   contents: write
