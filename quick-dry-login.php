@@ -3,7 +3,7 @@
  * Plugin Name: Quick & Dry Login
  * Plugin URI:  https://github.com/badasswp/quick-dry-login
  * Description: Manually select any user profile to log into your WP development or staging website.
- * Version:     1.0.2
+ * Version:     1.0.3
  * Author:      badasswp
  * Author URI:  https://github.com/badasswp
  * License:     GPL v2 or later
@@ -123,6 +123,8 @@ add_action( 'rest_api_init', function() {
  * Localise values for JS.
  *
  * @since 1.0.0
+ * @since 1.0.2 Fix Asset path for styles & scripts.
+ * @since 1.0.3 Enqueue styles in same way as scripts.
  *
  * @wp-hook 'login_enqueue_scripts'
  */
@@ -133,7 +135,6 @@ add_action( 'login_enqueue_scripts', function() {
 	 * On login, determine user's redirection.
 	 *
 	 * @since 1.0.0
-	 * @since 1.0.2 Fix Asset path (scripts.js).
 	 *
 	 * @param string $redirect
 	 * @return string
@@ -157,24 +158,13 @@ add_action( 'login_enqueue_scripts', function() {
 			'restUrl'  => esc_url( get_rest_url( null, 'quick-dry-login/v1' ) ),
 		]
 	);
-} );
 
-/**
- * Bind styles & scripts to WP hook.
- *
- * @since 1.0.0
- * @since 1.0.2 Fix Asset path (styles.css).
- *
- * @wp-hook 'login_head'
- */
-add_action( 'login_head', function() {
-	printf(
-		'<link
-			href="%s"
-			rel="stylesheet"
-			type="text/css"
-		/>',
-		esc_url( trailingslashit( plugin_dir_url( __FILE__ ) ) . 'styles.css' )
+	wp_enqueue_style(
+		'quick-dry-styles',
+		trailingslashit( plugin_dir_url( __FILE__ ) ) . 'styles.css',
+		[],
+		'1.0.3',
+		'all'
 	);
 } );
 
