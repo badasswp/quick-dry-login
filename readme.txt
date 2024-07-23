@@ -22,6 +22,12 @@ If you don't ever want to worry about entering in a username and password for yo
 
 == Changelog ==
 
+= 1.0.3 =
+* Enqueue styles same way as scripts.
+* Update styles for user dropdown.
+* Fix bugs.
+* Tested up to WP 6.6
+
 = 1.0.2 =
 * Fix Asset path for Styles & Scripts.
 * Safely escape asset path.
