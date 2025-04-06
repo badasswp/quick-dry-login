@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.4
+* Add WP local dev env.
+* Update README docs.
+
 ## 1.0.3
 * Enqueue styles same way as scripts.
 * Update styles for user dropdown.
