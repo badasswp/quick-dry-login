@@ -2,7 +2,7 @@
 Contributors: badasswp
 Tags: login, user, quick, fast.
 Requires at least: 4.0
-Tested up to: 6.6
+Tested up to: 6.7.2
 Stable tag: 1.0.4
 Requires PHP: 7.4
 License: GPLv2 or later
