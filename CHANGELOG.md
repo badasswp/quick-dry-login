@@ -2,7 +2,9 @@
 
 ## 1.0.4
 * Add WP local dev env.
+* Apply lint across codebase.
 * Update README docs.
+* Tested up to WP 6.7.2.
 
 ## 1.0.3
 * Enqueue styles same way as scripts.
