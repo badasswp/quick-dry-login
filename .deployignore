@@ -1,5 +1,10 @@
 .github
 .editorconfig
+.wp-env.json
+package.json
+phpcs.xml
+composer.json
 CHANGELOG.md
 README.md
 assets
+bin
