@@ -1,6 +1,7 @@
 .github
 .editorconfig
 .wp-env.json
+.gitignore
 package.json
 phpcs.xml
 composer.json
