@@ -6,10 +6,9 @@
 	"license": "GPL-2.0-or-later",
 	"homepage": "https://github.com/badasswp/quick-dry-login#readme",
 	"scripts": {
-		"start": "yarn boot && yarn build && yarn wp-env start",
+		"start": "yarn boot && yarn wp-env start",
 		"stop": "yarn wp-env stop",
 		"boot": "composer install && yarn install",
-		"test:php": "composer run test",
 		"lint:php": "composer run lint",
 		"lint:php:fix": "composer run lint:fix",
 		"ci": "yarn lint:php",
