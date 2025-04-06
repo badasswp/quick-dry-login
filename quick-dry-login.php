@@ -27,17 +27,20 @@ if ( ! defined( 'WPINC' ) ) {
  *
  * @wp-hook 'login_form'
  */
-add_action( 'login_form', function() {
-	?>
+add_action(
+	'login_form',
+	function () {
+		?>
 	<p class="quick-dry-login">
 		<label for="quick-dry-login">
-			<?php esc_html_e( 'Quick & Dry Login', 'quick-dry-login' ) ?>
+			<?php esc_html_e( 'Quick & Dry Login', 'quick-dry-login' ); ?>
 			<br />
 			<select id="quick-dry-select" aria-describedby="quick-dry-login">
 				<option value="">
-					<?php esc_html_e( 'Select User', 'quick-dry-login' ) ?>
+					<?php esc_html_e( 'Select User', 'quick-dry-login' ); ?>
 				</option>
-				<?php foreach( get_users() as $user ) {
+				<?php
+				foreach ( get_users() as $user ) {
 					$user_role = ucwords( get_userdata( $user->ID )->roles[0] ?? '' );
 
 					printf(
@@ -46,12 +49,14 @@ add_action( 'login_form', function() {
 						esc_html( $user_role ),
 						esc_html( strtolower( $user->user_email ) ),
 					);
-				} ?>
+				}
+				?>
 			</select>
 		</label>
 	</p>
-	<?php
-} );
+		<?php
+	}
+);
 
 /**
  * Register custom API endpoint.
@@ -61,63 +66,66 @@ add_action( 'login_form', function() {
  *
  * @wp-hook 'rest_api_init'
  */
-add_action( 'rest_api_init', function() {
-	register_rest_route(
-		'quick-dry-login/v1',
-		'/(?P<nonce>[\w]+)/(?P<id>[\d]+)',
-		[
-			'methods'             => \WP_REST_Server::READABLE,
-			'permission_callback' => '__return_true',
-			'callback'            => function( $request ) {
-				// Bail out, bad request.
-				if ( ! isset( $request['id'] ) || ! get_user_by( 'id', $request['id'] ) ) {
-					return new \WP_Error(
-						'quick_dry_login_invalid_user',
-						'Invalid User ID',
-						[
-							'status' => 400,
-						]
+add_action(
+	'rest_api_init',
+	function () {
+		register_rest_route(
+			'quick-dry-login/v1',
+			'/(?P<nonce>[\w]+)/(?P<id>[\d]+)',
+			[
+				'methods'             => \WP_REST_Server::READABLE,
+				'permission_callback' => '__return_true',
+				'callback'            => function ( $request ) {
+					// Bail out, bad request.
+					if ( ! isset( $request['id'] ) || ! get_user_by( 'id', $request['id'] ) ) {
+						return new \WP_Error(
+							'quick_dry_login_invalid_user',
+							'Invalid User ID',
+							[
+								'status' => 400,
+							]
+						);
+					}
+
+					// Bail out, un-authorized.
+					if ( ! isset( $request['nonce'] ) || ! wp_verify_nonce( $request['nonce'], 'quick-dry-login' ) ) {
+						return new \WP_Error(
+							'quick_dry_login_invalid_nonce',
+							'Invalid WP Nonce',
+							[
+								'status' => 401,
+							]
+						);
+					}
+
+					wp_set_current_user(
+						$request['id'],
+						get_user_by( 'id', $request['id'] )->user_login
 					);
-				}
 
-				// Bail out, un-authorized.
-				if ( ! isset( $request['nonce'] ) || ! wp_verify_nonce( $request['nonce'], 'quick-dry-login' ) ) {
-					return new \WP_Error(
-						'quick_dry_login_invalid_nonce',
-						'Invalid WP Nonce',
+					wp_set_auth_cookie( $request['id'], true );
+
+					/**
+					 * Fire on user's login success.
+					 *
+					 * @since 1.0.0
+					 *
+					 * @param string $user_id User ID.
+					 * @return void
+					 */
+					do_action( 'quick_dry_login_success', $request['id'] );
+
+					return rest_ensure_response(
 						[
-							'status' => 401,
-						]
+							'userId' => $request['id'],
+						],
+						200
 					);
-				}
-
-				wp_set_current_user(
-					$request['id'],
-					get_user_by( 'id', $request['id'] )->user_login
-				);
-
-				wp_set_auth_cookie( $request['id'], TRUE );
-
-				/**
-				 * Fire on user's login success.
-				 *
-				 * @since 1.0.0
-				 *
-				 * @param string $user_id User ID.
-				 * @return void
-				 */
-				do_action( 'quick_dry_login_success', $request['id'] );
-
-				return rest_ensure_response(
-					[
-						'userId' => $request['id']
-					],
-					200
-				);
-			},
-		]
-	);
-} );
+				},
+			]
+		);
+	}
+);
 
 /**
  * Localise values for JS.
@@ -128,45 +136,48 @@ add_action( 'rest_api_init', function() {
  *
  * @wp-hook 'login_enqueue_scripts'
  */
-add_action( 'login_enqueue_scripts', function() {
-	/**
-	 * Filter Redirect URL.
-	 *
-	 * On login, determine user's redirection.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param string $redirect
-	 * @return string
-	 */
-	$redirect_url = (string) apply_filters( 'quick_dry_login_redirect', get_admin_url() );
+add_action(
+	'login_enqueue_scripts',
+	function () {
+		/**
+		 * Filter Redirect URL.
+		 *
+		 * On login, determine user's redirection.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $redirect
+		 * @return string
+		 */
+		$redirect_url = (string) apply_filters( 'quick_dry_login_redirect', get_admin_url() );
 
-	wp_enqueue_script(
-		'quick-dry-scripts',
-		trailingslashit( plugin_dir_url( __FILE__ ) ) . 'scripts.js',
-		[],
-		'1.0.2',
-		true
-	);
+		wp_enqueue_script(
+			'quick-dry-scripts',
+			trailingslashit( plugin_dir_url( __FILE__ ) ) . 'scripts.js',
+			[],
+			'1.0.2',
+			true
+		);
 
-	wp_localize_script(
-		'quick-dry-scripts',
-		'quickDryLogin',
-		[
-			'redirect' => esc_url( $redirect_url ),
-			'nonce'    => wp_create_nonce( 'quick-dry-login' ),
-			'restUrl'  => esc_url( get_rest_url( null, 'quick-dry-login/v1' ) ),
-		]
-	);
+		wp_localize_script(
+			'quick-dry-scripts',
+			'quickDryLogin',
+			[
+				'redirect' => esc_url( $redirect_url ),
+				'nonce'    => wp_create_nonce( 'quick-dry-login' ),
+				'restUrl'  => esc_url( get_rest_url( null, 'quick-dry-login/v1' ) ),
+			]
+		);
 
-	wp_enqueue_style(
-		'quick-dry-styles',
-		trailingslashit( plugin_dir_url( __FILE__ ) ) . 'styles.css',
-		[],
-		'1.0.3',
-		'all'
-	);
-} );
+		wp_enqueue_style(
+			'quick-dry-styles',
+			trailingslashit( plugin_dir_url( __FILE__ ) ) . 'styles.css',
+			[],
+			'1.0.3',
+			'all'
+		);
+	}
+);
 
 /**
  * Add Plugin text translation.
@@ -175,6 +186,9 @@ add_action( 'login_enqueue_scripts', function() {
  *
  * @wp-hook 'init'
  */
-add_action( 'init', function() {
-	load_plugin_textdomain( 'quick-dry-login', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-} );
+add_action(
+	'init',
+	function () {
+		load_plugin_textdomain( 'quick-dry-login', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	}
+);
